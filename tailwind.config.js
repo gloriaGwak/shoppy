@@ -12,6 +12,14 @@ module.exports = {
         lg: { max: "1400px" },
         // xl: { min: "1401px", max: "1920px" }
       },
+      accentColor: theme => ({
+        ...theme('colors'),
+        'sky': '#73c7e3',
+        'linen': '#fff9f0',
+        'mint': '#24b0ba',
+        'lightGray': '#f0f2f2',
+        'navy': '#2e4a70',
+      }),
       backgroundColor: theme => ({
         ...theme('colors'),
         'sky': '#73c7e3',
@@ -29,6 +37,14 @@ module.exports = {
         'navy': '#2e4a70',
       }),
       borderColor: theme => ({
+        ...theme('colors'),
+        'sky': '#73c7e3',
+        'linen': '#fff9f0',
+        'mint': '#24b0ba',
+        'lightGray': '#f0f2f2',
+        'navy': '#2e4a70',
+      }),
+      textColor: theme => ({
         ...theme('colors'),
         'sky': '#73c7e3',
         'linen': '#fff9f0',

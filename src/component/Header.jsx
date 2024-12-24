@@ -4,13 +4,13 @@ import { PiDressLight, PiShoppingCartSimple } from "react-icons/pi";
 import User from './User';
 import Button from './ui/Button';
 import Svg from './ui/Svg';
-import { UseAuthContext } from '../context/AuthContext';
+import { useAuthContext } from '../context/AuthContext';
 
 export default function Header() {
-    const {user, login, logout} = UseAuthContext();
+    const {user, login, logout} = useAuthContext();
 
     return (
-        <header className='relative border-b'>
+        <header className='relative border-b text-navy'>
             <div className='border-b'>
                 <div className="header_inner flex items-center justify-between ">
                     <Link to='/' className='logo'>
@@ -25,7 +25,7 @@ export default function Header() {
                                 placeholder='Search Item'
                                 className='w-full h-10 md:h-8 px-4 rounded border '
                             />
-                            <button className='w-10 h-10 md:w-8 md:h-8 rounded border bg-mint text-white shrink-0 hover:text-white hover:bg-navy duration-200'>
+                            <button className='w-10 h-10 md:w-8 md:h-8 rounded border bg-navy text-white shrink-0 hover:text-white hover:bg-mint duration-200'>
                                 <Svg name={'IoSearchOutline'} text={'Search'} />
                             </button>
                         </form>
@@ -39,7 +39,7 @@ export default function Header() {
                             <li><Link to='/products' >Products</Link></li>
                             <li><Link to='/carts'><Svg name={'PiShoppingCartSimple'} text={'My Cart'} /></Link></li>
                             {user && user.isAdmin && 
-                                (<li><Link to='/admin'><Svg name={'GoPencil'} text={'Admin'} /></Link>
+                                (<li><Link to='/admin/product'><Svg name={'GoPencil'} text={'Admin'} /></Link>
                                 </li>)
                             }
                         </ul>

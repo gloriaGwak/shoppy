@@ -6,10 +6,10 @@ import App from './App';
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import AllProducts from "./pages/AllProducts";
-import Admin from "./pages/Admin";
+import Admin from "./pages/AddNewProduct";
 import ProductDetail from "./pages/ProductDetail";
 import MyCart from "./pages/MyCart";
-import ProtectedRoute from "./pages/MyCart";
+import ProtectedRoute from './pages/ProtectedRoute';
 import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
@@ -21,20 +21,21 @@ const router = createBrowserRouter([
       { index: true, element:<Home /> },
       { path: '/products', element: <AllProducts /> },
       { path: '/products/:id', element: <ProductDetail /> },
-      { path: '/carts', element: 
-        <ProtectedRoute>
-          <MyCart />
-        </ProtectedRoute> 
+      { path: '/carts', element:( 
+          <ProtectedRoute>
+            <MyCart />
+          </ProtectedRoute> 
+        )
       },
-      { path: '/admin', element: 
-        <ProtectedRoute reqiredAdmin>
-          <Admin />
-        </ProtectedRoute>  
+      { path: '/admin/product', element:(
+          <ProtectedRoute reqiredAdmin>
+            <Admin />
+          </ProtectedRoute>  
+        )
       },
     ]
   }
 ]);
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
