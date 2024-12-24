@@ -1,5 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getDatabase, ref, child, get } from "firebase/database";
+
 import { 
     getAuth, 
     signInWithPopup, 
@@ -8,7 +9,6 @@ import {
     onAuthStateChanged 
 } from "firebase/auth";
 
-// import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -17,21 +17,12 @@ const firebaseConfig = {
     projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
 };
 
-
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
-// // const analytics = getAnalytics(app);
+const database = getDatabase(app);
 
 export async function login() {
-    // signInWithPopup(auth, provider)
-    // .then((result) => {
-    //     const user = result.user;
-    //     return user;
-    // }).catch((error) => {
-    //     console.error(error)
-    // });
     signInWithPopup(auth, provider)
     .catch(console.error);
 }
@@ -41,7 +32,20 @@ export function logout() {
 }
 
 export function onUserStateChange(callback) {
-    onAuthStateChanged(auth, (user) => {
-        callback(user);
+    onAuthStateChanged(auth, async (user) => {
+        const updatedUser = user ? await adminUser(user) : null;
+        callback(updatedUser);
     });
+}
+
+async function adminUser(user){
+    return get(ref(database, 'admins'))
+    .then((snapshop) => {
+        if(snapshop.exists()){
+            const admins = snapshop.val();
+            const isAdmin = admins.includes(user.uid);
+            return {...user, isAdmin};
+        }
+        return user;
+    })
 }

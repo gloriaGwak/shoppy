@@ -9,6 +9,7 @@ import AllProducts from "./pages/AllProducts";
 import Admin from "./pages/Admin";
 import ProductDetail from "./pages/ProductDetail";
 import MyCart from "./pages/MyCart";
+import ProtectedRoute from "./pages/MyCart";
 import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
@@ -18,10 +19,18 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       { index: true, element:<Home /> },
-      { path: '/products', element:<AllProducts /> },
-      { path: '/products/:id', element:<ProductDetail /> },
-      { path: '/carts', element:<MyCart /> },
-      { path: '/admin', element:<Admin /> },
+      { path: '/products', element: <AllProducts /> },
+      { path: '/products/:id', element: <ProductDetail /> },
+      { path: '/carts', element: 
+        <ProtectedRoute>
+          <MyCart />
+        </ProtectedRoute> 
+      },
+      { path: '/admin', element: 
+        <ProtectedRoute reqiredAdmin>
+          <Admin />
+        </ProtectedRoute>  
+      },
     ]
   }
 ]);

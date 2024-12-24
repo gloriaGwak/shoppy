@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function MyCart() {
     return (
-        <div>
+        <div className='content'>
             MyCart
         </div>
     );

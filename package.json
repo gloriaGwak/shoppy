@@ -4,6 +4,7 @@
   "private": true,
   "packageManager": "yarn@4.5.0+sha512.837566d24eec14ec0f5f1411adb544e892b3454255e61fdef8fd05f3429480102806bac7446bc9daff3896b01ae4b62d00096c7e989f1596f2af10b927532f39",
   "dependencies": {
+    "@firebase/app": "^0.10.17",
     "@tanstack/react-query": "^5.62.8",
     "@tanstack/react-query-devtools": "^5.62.8",
     "@testing-library/jest-dom": "^5.14.1",
@@ -11,6 +12,7 @@
     "@testing-library/user-event": "^13.2.1",
     "axios": "^1.7.9",
     "firebase": "^11.1.0",
+    "firebase-admin": "^13.0.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
@@ -43,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.9",
     "eslint-config-react-app": "^7.0.1",
     "tailwindcss": "^3.4.17"
   }
