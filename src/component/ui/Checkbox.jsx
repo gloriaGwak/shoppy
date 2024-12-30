@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Checkbox({name,id,label}) {
+export default function Checkbox({name, id, label, onChange}) {
     return (
         <label 
             className='w-[calc(25%-0.75rem)] md:w-[calc(50%-1rem)] text-lg md:text-base'
@@ -11,6 +11,8 @@ export default function Checkbox({name,id,label}) {
                 type="checkbox" 
                 name={name} 
                 id={id} 
+                value={id}
+                onChange={onChange}
             />
             {label}
         </label>

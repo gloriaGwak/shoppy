@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function FileInput({id, value}) {
+export default function FileInput({name, value, onChange}) {
     return (
         <div className=' w-full'>
             <label 
@@ -12,14 +12,18 @@ export default function FileInput({id, value}) {
             <div className="relative">
                 <input 
                     type='file' 
-                    id={id} 
+                    id={name} 
+                    name={name}
+                    onChange={onChange}
                     placeholder='' 
-                    className='absolute top-0 left-0 w-full h-10 opacity-0
-                '/>
+                    accept='image/*'
+                    className='absolute top-0 left-0 w-full h-10 opacity-0'
+                />
                 <input 
                     type='text' 
                     id={`id`} 
-                    placeholder={value} 
+                    placeholder={value}
+                    onChange={onChange}
                     className=' w-full h-10 md:h-9 px-4 rounded border ' 
                     disabled
                 />
