@@ -13,7 +13,7 @@ export default function TextInput({type, name, placeholder, label, onChange}) {
                 id={name}
                 placeholder={placeholder} 
                 onChange={onChange}
-                className='w-full h-10 md:h-9 px-4 rounded border '
+                className='w-full h-12 md:h-10 px-4 rounded border '
             />
         </div>
     );
