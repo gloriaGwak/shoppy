@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { PiDressLight, PiShoppingCartSimple } from "react-icons/pi";
+import { PiDressLight } from "react-icons/pi";
 import User from './User';
 import Button from './ui/Button';
 import Svg from './ui/Svg';

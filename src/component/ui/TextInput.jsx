@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export default function TextInput({type, name, placeholder, label, onChange}) {
+export default function TextInput({type, name, placeholder, label, onChange, reqired}) {
     return (
         <div className='w-full'>
             <label 
@@ -13,6 +13,7 @@ export default function TextInput({type, name, placeholder, label, onChange}) {
                 id={name}
                 placeholder={placeholder} 
                 onChange={onChange}
+                reqired={reqired}
                 className='w-full h-12 md:h-10 px-4 rounded border '
             />
         </div>

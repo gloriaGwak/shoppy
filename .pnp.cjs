@@ -27,6 +27,8 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["@cloudinary/react", "virtual:16e654a9d365e02f7e28ac465e17fac93840604085351a9f6343f69b3a793d34618b538eea2150d2f1f567e908e7676db665faf19a175c38c1abccd63a770793#npm:1.13.1"],\
+          ["@cloudinary/url-gen", "npm:1.21.0"],\
           ["@firebase/app", "npm:0.10.17"],\
           ["@tailwindcss/forms", "virtual:16e654a9d365e02f7e28ac465e17fac93840604085351a9f6343f69b3a793d34618b538eea2150d2f1f567e908e7676db665faf19a175c38c1abccd63a770793#npm:0.5.9"],\
           ["@tanstack/react-query", "virtual:16e654a9d365e02f7e28ac465e17fac93840604085351a9f6343f69b3a793d34618b538eea2150d2f1f567e908e7676db665faf19a175c38c1abccd63a770793#npm:5.62.8"],\
@@ -44,6 +46,7 @@ const RAW_RUNTIME_STATE =
           ["react-router-dom", "virtual:16e654a9d365e02f7e28ac465e17fac93840604085351a9f6343f69b3a793d34618b538eea2150d2f1f567e908e7676db665faf19a175c38c1abccd63a770793#npm:7.1.0"],\
           ["react-scripts", "virtual:16e654a9d365e02f7e28ac465e17fac93840604085351a9f6343f69b3a793d34618b538eea2150d2f1f567e908e7676db665faf19a175c38c1abccd63a770793#npm:5.0.1"],\
           ["tailwindcss", "npm:3.4.17"],\
+          ["uuid", "npm:11.0.3"],\
           ["web-vitals", "npm:2.1.4"]\
         ],\
         "linkType": "SOFT"\
@@ -3099,6 +3102,64 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../C:/Users/yuyu0/AppData/Local/Yarn/Berry/cache/@bcoe-v8-coverage-npm-0.2.3-9e27b3c57e-10c0.zip/node_modules/@bcoe/v8-coverage/",\
         "packageDependencies": [\
           ["@bcoe/v8-coverage", "npm:0.2.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@cloudinary/html", [\
+      ["npm:1.13.1", {\
+        "packageLocation": "../../../C:/Users/yuyu0/AppData/Local/Yarn/Berry/cache/@cloudinary-html-npm-1.13.1-b6b94fbc46-10c0.zip/node_modules/@cloudinary/html/",\
+        "packageDependencies": [\
+          ["@cloudinary/html", "npm:1.13.1"],\
+          ["@types/lodash.clonedeep", "npm:4.5.9"],\
+          ["@types/lodash.debounce", "npm:4.0.9"],\
+          ["@types/node", "npm:14.18.63"],\
+          ["lodash.clonedeep", "npm:4.5.0"],\
+          ["lodash.debounce", "npm:4.0.8"],\
+          ["typescript", "patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@cloudinary/react", [\
+      ["npm:1.13.1", {\
+        "packageLocation": "../../../C:/Users/yuyu0/AppData/Local/Yarn/Berry/cache/@cloudinary-react-npm-1.13.1-b75e671ceb-10c0.zip/node_modules/@cloudinary/react/",\
+        "packageDependencies": [\
+          ["@cloudinary/react", "npm:1.13.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:16e654a9d365e02f7e28ac465e17fac93840604085351a9f6343f69b3a793d34618b538eea2150d2f1f567e908e7676db665faf19a175c38c1abccd63a770793#npm:1.13.1", {\
+        "packageLocation": "./.yarn/__virtual__/@cloudinary-react-virtual-583e4ffca9/4/C:/Users/yuyu0/AppData/Local/Yarn/Berry/cache/@cloudinary-react-npm-1.13.1-b75e671ceb-10c0.zip/node_modules/@cloudinary/react/",\
+        "packageDependencies": [\
+          ["@cloudinary/react", "virtual:16e654a9d365e02f7e28ac465e17fac93840604085351a9f6343f69b3a793d34618b538eea2150d2f1f567e908e7676db665faf19a175c38c1abccd63a770793#npm:1.13.1"],\
+          ["@cloudinary/html", "npm:1.13.1"],\
+          ["@types/react", null],\
+          ["react", "npm:19.0.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@cloudinary/transformation-builder-sdk", [\
+      ["npm:1.16.1", {\
+        "packageLocation": "../../../C:/Users/yuyu0/AppData/Local/Yarn/Berry/cache/@cloudinary-transformation-builder-sdk-npm-1.16.1-82347897d0-10c0.zip/node_modules/@cloudinary/transformation-builder-sdk/",\
+        "packageDependencies": [\
+          ["@cloudinary/transformation-builder-sdk", "npm:1.16.1"],\
+          ["@cloudinary/url-gen", "npm:1.21.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@cloudinary/url-gen", [\
+      ["npm:1.21.0", {\
+        "packageLocation": "../../../C:/Users/yuyu0/AppData/Local/Yarn/Berry/cache/@cloudinary-url-gen-npm-1.21.0-fb90f1e971-10c0.zip/node_modules/@cloudinary/url-gen/",\
+        "packageDependencies": [\
+          ["@cloudinary/url-gen", "npm:1.21.0"],\
+          ["@cloudinary/transformation-builder-sdk", "npm:1.16.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6260,6 +6321,35 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/lodash", [\
+      ["npm:4.17.14", {\
+        "packageLocation": "../../../C:/Users/yuyu0/AppData/Local/Yarn/Berry/cache/@types-lodash-npm-4.17.14-6b38705727-10c0.zip/node_modules/@types/lodash/",\
+        "packageDependencies": [\
+          ["@types/lodash", "npm:4.17.14"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/lodash.clonedeep", [\
+      ["npm:4.5.9", {\
+        "packageLocation": "../../../C:/Users/yuyu0/AppData/Local/Yarn/Berry/cache/@types-lodash.clonedeep-npm-4.5.9-3e0f9fe2fe-10c0.zip/node_modules/@types/lodash.clonedeep/",\
+        "packageDependencies": [\
+          ["@types/lodash.clonedeep", "npm:4.5.9"],\
+          ["@types/lodash", "npm:4.17.14"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/lodash.debounce", [\
+      ["npm:4.0.9", {\
+        "packageLocation": "../../../C:/Users/yuyu0/AppData/Local/Yarn/Berry/cache/@types-lodash.debounce-npm-4.0.9-dcafdcd4bd-10c0.zip/node_modules/@types/lodash.debounce/",\
+        "packageDependencies": [\
+          ["@types/lodash.debounce", "npm:4.0.9"],\
+          ["@types/lodash", "npm:4.17.14"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/long", [\
       ["npm:4.0.2", {\
         "packageLocation": "../../../C:/Users/yuyu0/AppData/Local/Yarn/Berry/cache/@types-long-npm-4.0.2-e7bdc00dd4-10c0.zip/node_modules/@types/long/",\
@@ -6279,6 +6369,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@types/node", [\
+      ["npm:14.18.63", {\
+        "packageLocation": "../../../C:/Users/yuyu0/AppData/Local/Yarn/Berry/cache/@types-node-npm-14.18.63-a411f0ee60-10c0.zip/node_modules/@types/node/",\
+        "packageDependencies": [\
+          ["@types/node", "npm:14.18.63"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:22.10.2", {\
         "packageLocation": "../../../C:/Users/yuyu0/AppData/Local/Yarn/Berry/cache/@types-node-npm-22.10.2-572466b048-10c0.zip/node_modules/@types/node/",\
         "packageDependencies": [\
@@ -18275,6 +18372,8 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["shoppy", "workspace:."],\
+          ["@cloudinary/react", "virtual:16e654a9d365e02f7e28ac465e17fac93840604085351a9f6343f69b3a793d34618b538eea2150d2f1f567e908e7676db665faf19a175c38c1abccd63a770793#npm:1.13.1"],\
+          ["@cloudinary/url-gen", "npm:1.21.0"],\
           ["@firebase/app", "npm:0.10.17"],\
           ["@tailwindcss/forms", "virtual:16e654a9d365e02f7e28ac465e17fac93840604085351a9f6343f69b3a793d34618b538eea2150d2f1f567e908e7676db665faf19a175c38c1abccd63a770793#npm:0.5.9"],\
           ["@tanstack/react-query", "virtual:16e654a9d365e02f7e28ac465e17fac93840604085351a9f6343f69b3a793d34618b538eea2150d2f1f567e908e7676db665faf19a175c38c1abccd63a770793#npm:5.62.8"],\
@@ -18292,6 +18391,7 @@ const RAW_RUNTIME_STATE =
           ["react-router-dom", "virtual:16e654a9d365e02f7e28ac465e17fac93840604085351a9f6343f69b3a793d34618b538eea2150d2f1f567e908e7676db665faf19a175c38c1abccd63a770793#npm:7.1.0"],\
           ["react-scripts", "virtual:16e654a9d365e02f7e28ac465e17fac93840604085351a9f6343f69b3a793d34618b538eea2150d2f1f567e908e7676db665faf19a175c38c1abccd63a770793#npm:5.0.1"],\
           ["tailwindcss", "npm:3.4.17"],\
+          ["uuid", "npm:11.0.3"],\
           ["web-vitals", "npm:2.1.4"]\
         ],\
         "linkType": "SOFT"\
@@ -19567,6 +19667,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["typedarray-to-buffer", "npm:3.1.5"],\
           ["is-typedarray", "npm:1.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["typescript", [\
+      ["patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587", {\
+        "packageLocation": "../../../C:/Users/yuyu0/AppData/Local/Yarn/Berry/cache/typescript-patch-32ada147aa-10c0.zip/node_modules/typescript/",\
+        "packageDependencies": [\
+          ["typescript", "patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587"]\
         ],\
         "linkType": "HARD"\
       }]\

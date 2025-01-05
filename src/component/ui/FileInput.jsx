@@ -3,8 +3,7 @@ import { MdDelete } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
 
 
-
-export default function FileInput({name, imgName, previewUrl, onChange}) {
+export default function FileInput({name, imgName, file, onChange, onClick, reqired}) {
     return (
         <>
             <div className='w-[calc(70%-1rem)] sm:w-full'>
@@ -31,12 +30,13 @@ export default function FileInput({name, imgName, previewUrl, onChange}) {
                     </div>
                     <label 
                         className='inline-block w-[48px] h-[48px] md:h-10 md:w-10 ml-2 bg-navy rounded text-lightGray hover:bg-mint duration-200 align-top'
-                        htmlFor='prdImage'
+                        htmlFor={name}
                     >   
                         <span className="blind">Add image</span>
                         <IoMdAdd className='flex items-center w-[70%] h-full m-auto' />
                     </label>
                     <button
+                        onClick={onClick}
                         className='inline-block w-[48px] h-[48px] md:h-10 md:w-10 ml-2 bg-red-500 rounded text-lightGray hover:bg-red-700 duration-200 align-top'
                     >
                         <span className="blind">Delete image</span>
@@ -44,11 +44,11 @@ export default function FileInput({name, imgName, previewUrl, onChange}) {
                     </button>
                 </div>
             </div>
-            <div className="w-[calc(30%-1rem)] sm:w-full">
-                {previewUrl ? (
-                    <img src={previewUrl} alt="" />
+            <div className="w-[calc(30%-1rem)] border sm:w-full">
+                {file ? (
+                    <img src={URL.createObjectURL(file)} alt="" />
                 ) : (
-                    <div className='flex item-center justify-center w-full h-full border pb-[50%] text-center'>
+                    <div className='flex item-center justify-center w-full h-full pb-[50%] text-center'>
                         <p>Preview Image</p>
                     </div>
                 )}

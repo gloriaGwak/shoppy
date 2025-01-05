@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, child, get } from "firebase/database";
-
+import { getDatabase, ref, get, set } from "firebase/database";
+import { v4 as uuid } from 'uuid';
 import { 
     getAuth, 
     signInWithPopup, 
@@ -48,4 +48,15 @@ async function adminUser(user){
         }
         return user;
     })
+}
+
+export async function addNewProduct(product, images){
+    const id = uuid();
+    
+    return set(ref(database, `products/${uuid()}`), {
+        ...product,
+        id,
+        price: parseInt(product.price),
+        images
+    });
 }

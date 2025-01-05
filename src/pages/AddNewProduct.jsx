@@ -2,125 +2,143 @@ import React, { useEffect, useState } from 'react';
 import RadioButton from '../component/ui/RadioButton';
 import Checkbox from '../component/ui/Checkbox';
 import TextInput from '../component/ui/TextInput';
-// import Button from '../component/ui/Button';
 import FileInput from '../component/ui/FileInput';
+import { uploadImage } from '../api/uploader';
+import { addNewProduct } from '../api/firebase';
+import Loading from '../component/ui/Loading';
+import Success from '../component/ui/Success';
 
 export default function Admin() {
-    // const [product, setProduct] = useState({});
-    const [previewUrl, setPreviewUrl] = useState('');
+    const [file, setFile] = useState();
+    const [isUploading, setIsUploading] = useState(false);
+    const [success, setSuccess] = useState(false);
     const [product, setProduct] = useState({
-        prdName: '',
-        prdPrice: '',
-        prdCategory: '',
-        prdDescription: '',
-        prdSize: [],
-        prdImage: '',
+        name: '',
+        price: '',
+        category: '',
+        description: '',
+        size: [],
+        image: '',
     });
     
     const handleChange = ({target}) => {
         const { name, value, files, checked } = target;
 
-        if (name === "prdImage" && files && files[0]) {
-            const url = URL.createObjectURL(files[0]);
-            setPreviewUrl(url);
+        if (name === "image") {
+            setFile(files && files[0]);
         }
 
         setProduct((prev) => {
-            if (name === "prdImage") {
-                return { ...prev, prdImage: files && files[0] }; // Update image
+            if (name === "image") {
+                return { ...prev, image: files && files[0] }; // Update image
             }
 
-            if (name === "prdSize") {
-                const updatedSizes = checked
-                    ? [...prev.prdSize, value] // add when checked
-                    : prev.prdSize.filter((size) => size !== value); // remove when unchecked
+            if (name === "size") {
+                const updatedsize = checked
+                    ? [...prev.size, value] // add when checked
+                    : prev.size.filter((size) => size !== value); // remove when unchecked
 
-                return { ...prev, prdSize: updatedSizes }; // update array
+                return { ...prev, size: updatedsize }; // update array
             }
 
             return { ...prev, [name]: value };
         });
     };
 
-    useEffect(() => {
-        if (previewUrl) {
-            console.log('Updated previewUrl:', previewUrl);
+    const handleImageDelete = (e) => {
+        if(product.image !== ''){
+            product.image = '';
         }
-        // console.log("Updated product:", product.prdImage);
+    }
+
+    useEffect(() => {
+        // console.log("Updated product:", product);
     }, [product]);
 
-
+    console.log(document.querySelectorAll('input'))
     const handleSubmit = (e) => {
         e.preventDefault();
-        // if(text.trim().length === 0){
-        //     return
-        // }
-        // setProduct([...product, product])
+        setIsUploading(true);
+        uploadImage(file)
+        .then((url) => {
+            addNewProduct(product,url)
+            .then(() => {
+                setSuccess(true);
+                setTimeout(() => {
+                    setSuccess(false);
+                }, 3000);
+            })
+        })
+        .finally(() => setIsUploading(false));
     };
     return (
         <div className='content'>
+            {/* <Success /> */}
+            {success && <Success />}
             <div className='inner'>
                 <h2 className='mb-12 md:mb-8 font-medium text-2xl'>Add New Product</h2>
                 <form 
                     onSubmit={handleSubmit}
                     className='w-full flex flex-col items-start justify-center gap-8 md:gap-6'
                 >
-                    <TextInput type={'text'} name={'prdName'} onChange={handleChange} label={'Name'} placeholder={'Enter product name'} />
-                    <TextInput type={'text'} name={'prdPrice'} onChange={handleChange} label={'Price'} placeholder={'Enter product price'} />
+                    <TextInput type={'text'} name={'name'} onChange={handleChange} label={'Name'} placeholder={'Enter product name'} reqired={'true'} />
+                    <TextInput type={'text'} name={'price'} onChange={handleChange} label={'Price'} placeholder={'Enter product price'} reqired={'true'} />
                     <div className='w-full'>
                         <label 
                             className='block mb-2 md:mb-1 font-medium text-lg md:text-base'
-                            htmlFor='prdCategory'
+                            htmlFor='category'
                         >
                                 Category
                         </label>
                         <div className='flex flex-wrap w-full gap-4'>
-                            <RadioButton name={'prdCategory'} id={'outerwear'} label={'Outerwear'} onChange={handleChange} />
-                            <RadioButton name={'prdCategory'} id={'top'} label={'Top'} onChange={handleChange} />
-                            <RadioButton name={'prdCategory'} id={'bottom'} label={'Bottom'} onChange={handleChange} />
-                            <RadioButton name={'prdCategory'} id={'dress'} label={'Dress'} onChange={handleChange} />
+                            <RadioButton name={'category'} id={'outerwear'} label={'Outerwear'} onChange={handleChange} />
+                            <RadioButton name={'category'} id={'top'} label={'Top'} onChange={handleChange} />
+                            <RadioButton name={'category'} id={'bottom'} label={'Bottom'} onChange={handleChange} />
+                            <RadioButton name={'category'} id={'dress'} label={'Dress'} onChange={handleChange} />
                         </div>
                     </div>
                     <div className='w-full'>
                         <label 
                             className='block mb-2 md:mb-1 font-medium text-lg md:text-base'
-                            htmlFor='prdDescription'
+                            htmlFor='description'
                         >
                             Description
                         </label>
                         <textarea 
                             onChange={handleChange}
                             className='w-full h-[200px] md:h-8 md:h-[150px] px-4 py-2 rounded border'
-                            name="prdDescription" 
-                            id="prdDescription"
+                            name="description" 
+                            id="description"
                         ></textarea>
                     </div>
                     <div className='w-full'>
                         <label 
                             className='block mb-2 md:mb-1 font-medium text-lg md:text-base'
-                            htmlFor='prdSize'
+                            htmlFor='size'
                         >
                             Size
                         </label>
                         <div className='flex flex-wrap w-full gap-4'>
-                            <Checkbox name={'prdSize'} id={'small'} label={'S'} onChange={handleChange} />
-                            <Checkbox name={'prdSize'} id={'medium'} label={'M'} onChange={handleChange} />
-                            <Checkbox name={'prdSize'} id={'large'} label={'L'} onChange={handleChange} />
-                            <Checkbox name={'prdSize'} id={'xLarge'} label={'XL'} onChange={handleChange} />
+                            <Checkbox name={'size'} id={'small'} label={'S'} onChange={handleChange} />
+                            <Checkbox name={'size'} id={'medium'} label={'M'} onChange={handleChange} />
+                            <Checkbox name={'size'} id={'large'} label={'L'} onChange={handleChange} />
+                            <Checkbox name={'size'} id={'xLarge'} label={'XL'} onChange={handleChange} />
                         </div>
                     </div>
                     <div className="flex items-start justify-between gap-8 md:gap-6 sm:flex-wrap w-full">
-                        <FileInput name={'prdImage'} imgName={product.prdImage.name} previewUrl={previewUrl} onChange={handleChange} />
+                        <FileInput name={'image'} imgName={product.image.name} file={file} onChange={handleChange} onClick={handleImageDelete} reqired={'true'} />
                     </div>
                     <div className='w-full mt-4'>
                         <button 
-                            className='block m-auto py-3 px-4 bg-navy rounded-md text-lightGray hover:bg-mint duration-200'
+                            className={`block m-auto py-3 px-4 ${isUploading ? 'bg-gray-500 text-white' : 'bg-navy text-lightGray hover:bg-mint duration-200'} rounded-md`}
+                            disabled={isUploading}
                         >
-                            Add New Product
+                            {isUploading ? 'Uploading' : 'Add New Product'}
                         </button>
                     </div>
                 </form>
             </div>
+            {isUploading && <Loading />}
         </div>
     );
 }
