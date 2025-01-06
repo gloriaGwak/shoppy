@@ -25,7 +25,10 @@ export default function Header() {
                                 placeholder='Search Item'
                                 className='w-full h-10 md:h-8 px-4 rounded border '
                             />
-                            <button className='w-10 h-10 md:w-8 md:h-8 rounded border bg-navy text-white shrink-0 hover:text-white hover:bg-mint duration-200'>
+                            <button 
+                                type='button' 
+                                className='w-10 h-10 md:w-8 md:h-8 rounded border bg-navy text-white shrink-0 hover:text-white hover:bg-mint duration-200'
+                            >
                                 <Svg name={'IoSearchOutline'} text={'Search'} />
                             </button>
                         </form>
@@ -44,8 +47,10 @@ export default function Header() {
                             }
                         </ul>
                         {user && <User user={user} />}
-                        {!user && <Button onClick={login} text={'Login'} />}
-                        {user && <Button onClick={logout} text={'Logout'} />}
+                        {/* {!user && <Button onClick={login} text={'Login'} />}
+                        {user && <Button onClick={logout} text={'Logout'} />} */}
+                        {!user && <button onClick={login}>Login</button>}
+                        {user && <button onClick={logout}>Logout</button>}
                     </nav>
                 </div>
             </div>

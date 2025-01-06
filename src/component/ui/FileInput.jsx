@@ -29,7 +29,7 @@ export default function FileInput({name, imgName, file, onChange, onClick, reqir
                         />
                     </div>
                     <label 
-                        className='inline-block w-[48px] h-[48px] md:h-10 md:w-10 ml-2 bg-navy rounded text-lightGray hover:bg-mint duration-200 align-top'
+                        className='inline-block w-[48px] h-[48px] cursor-pointer md:h-10 md:w-10 ml-2 bg-navy rounded text-lightGray hover:bg-mint duration-200 align-top'
                         htmlFor={name}
                     >   
                         <span className="blind">Add image</span>
@@ -37,6 +37,7 @@ export default function FileInput({name, imgName, file, onChange, onClick, reqir
                     </label>
                     <button
                         onClick={onClick}
+                        type='button'
                         className='inline-block w-[48px] h-[48px] md:h-10 md:w-10 ml-2 bg-red-500 rounded text-lightGray hover:bg-red-700 duration-200 align-top'
                     >
                         <span className="blind">Delete image</span>

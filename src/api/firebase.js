@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, get, set } from "firebase/database";
+import { getDatabase, ref, get, set, onValue } from "firebase/database";
 import { v4 as uuid } from 'uuid';
 import { 
     getAuth, 
@@ -40,9 +40,9 @@ export function onUserStateChange(callback) {
 
 async function adminUser(user){
     return get(ref(database, 'admins'))
-    .then((snapshop) => {
-        if(snapshop.exists()){
-            const admins = snapshop.val();
+    .then((snapshot) => {
+        if(snapshot.exists()){
+            const admins = snapshot.val();
             const isAdmin = admins.includes(user.uid);
             return {...user, isAdmin};
         }
@@ -59,4 +59,13 @@ export async function addNewProduct(product, images){
         price: parseInt(product.price),
         images
     });
+}
+
+export async function getProducts(){
+    return get(ref(database, 'products'))
+    .then((snapshot) => {
+        if(snapshot.exists()){
+            return Object.values(snapshot.val());
+        }
+    })
 }

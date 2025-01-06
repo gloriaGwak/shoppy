@@ -1,12 +1,22 @@
 import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
-export default function Success() {
+export default function Success({state}) {
+    console.log("호출",state)
+    if(state){
+        toast.success('🙌Added successfully!', {
+            position: 'top-center',
+        });
+    }
+    
     return (
-        <div className='fixed top-0 left-0 z-10 w-full bg-gradient-to-r from-sky to-linen'>
-            <div className="inner">
-                <p className='py-4 text-xl md:text-base'>Added new product successfully!🙌</p>
-            </div>
-        </div>
+        // <ToastContainer />
+        <ToastContainer />
+        // <div className='fixed top-[40px] left-[50%] z-10 w-auto p-4 bg-mint rounded shadow-2xl translate-x-[-50%] sm:w-[calc(100%-30px)] sm:py-2'>
+        //     <div className="flex items-center justify-center gap-4 w-full">
+        //         <p className='text-xl md:text-lg text-linen'>🙌Added successfully!</p>
+        //     </div>
+        // </div>
     );
 }
 

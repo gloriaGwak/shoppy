@@ -11,7 +11,7 @@ export default function Checkbox({name, id, label, onChange}) {
                 type="checkbox" 
                 name={name} 
                 id={id} 
-                value={id}
+                value={name}
                 onChange={onChange}
             />
             {label}
