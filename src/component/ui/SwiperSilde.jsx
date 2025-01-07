@@ -17,8 +17,11 @@ export default function SwiperSilde() {
             // navigation
             // pagination={{ clickable: true }}
             // scrollbar={{ draggable: true }}
-            loop={true} 
-            autoplay={{ delay: 2000, disableOnInteraction: false }}
+            rewind={true}
+            autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+            }}
             effect='fade'
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log('slide change')}

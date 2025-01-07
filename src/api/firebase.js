@@ -69,3 +69,12 @@ export async function getProducts(){
         }
     })
 }
+
+// export async function addCart(product){
+//     return set(ref(database, `cart/${uuid()}`), {
+//         ...product,
+//         id,
+//         price: parseInt(product.price),
+//         images
+//     });
+// }
