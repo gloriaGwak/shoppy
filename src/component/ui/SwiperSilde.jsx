@@ -23,8 +23,8 @@ export default function SwiperSilde() {
                 disableOnInteraction: false,
             }}
             effect='fade'
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log('slide change')}
+            // onSwiper={(swiper) => console.log(swiper)}
+            // onSlideChange={() => console.log('slide change')}
             className='relative'
         >
             <SwiperSlide>

@@ -1,46 +1,73 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '../component/ui/Button';
+import { useAuthContext } from '../context/AuthContext';
+import { addOrUpdateToCart } from '../api/firebase';
 
 export default function ProductDetail() {
+    const {uid} = useAuthContext();
     const navigate = useNavigate();
-    const {state: {product}} = useLocation();
-    const [selected, setSelected] = useState(null);
-
+    const {state: {
+            product,
+            product: {id, images, name, category, price, size, description}
+        }
+    } = useLocation();
+    const [selected, setSelected] = useState(0);
+    
     const handleSelect = (idx) => {
         setSelected(idx); // 클릭한 버튼의 index를 상태로 저장
     }
 
-    const handleAddCart = (product) => {
-        // console.log(product)
+    const handleAddCart = () => {
+        if (!size[selected]) {
+            return;
+        }    
+        const selectedSize = size[selected];
+        const product = {id, category, images, name, price, size:selectedSize, quantity: 1};
+
         // navigate(`/carts`, {state: {product}});
-        navigate(`/carts`);
+        addOrUpdateToCart(uid,product)
+        // .then(() => {
+            // toast.update(tt, { 
+            //     render: "Product added successfully!", 
+            //     type: "success", 
+            //     isLoading: false, 
+            //     autoClose: 3000 
+            // });
+            // setSuccess(true);
+
+            // setTimeout(() => {
+            //     setSuccess(false);
+            //     window.location.reload();
+            // }, 3000);
+        // })
+        // navigate(`/carts`);
     }
 
     return (
         <main>
             <div className='content'>
                 <div className="inner ">
-                    <div className='flex items-stretch justify-start gap-8 md:flex-wrap md:gap-4'>
-                        <div className='w-[calc(50%-1rem)] md:w-full'>
+                    <div className='
+                        flex items-stretch justify-start md:gap-8 flex-wrap gap-4
+                    '>
+                        <div className='md:w-[calc(50%-1rem)] w-full'>
                             <img 
-                                className='sticky top-0 left-0 rounded-lg md:relative md:rounded'
-                                src={product.images} 
-                                alt={product.name} 
+                                className='md:sticky top-0 left-0 md:rounded-lg relative rounded'
+                                src={images} 
+                                alt={name} 
                             />
                         </div>
-                        <div className='w-[calc(50%-1rem)] px-8 py-20 bg-linen rounded-lg md:w-full md:rounded md:p-6'>
+                        <div className='md:w-[calc(50%-1rem)] md:px-8 md:py-10 bg-linen md:rounded-lg w-full rounded p-6'>
                             <div className=''>
-                                <span className='capitalize font-medium text-base md:text-sm text-mint'>{product.category}</span>
-                                <h3 className='mt-2 md:mt-1 capitalize font-bold text-4xl md:text-3xl'>{product.name}</h3>
-                                <p className='mt-4 md:mt-2 font-bold text-3xl md:text-2xl'>
-                                    <span className=''>$</span>{`${product.price}`}
-                                </p>
-                                <div className='mt-24 md:mt-10'>
-                                    <h4 className='mb-4 font-bold text-2xl md:text-xl'>Select Size</h4>
+                                <span className='capitalize font-medium md:text-base text-sm text-mint'>{category}</span>
+                                <h3 className='md:mt-2 mt-1 capitalize font-bold md:text-4xl text-3xl'>{name}</h3>
+                                <p className='md:mt-4 mt-2 font-bold md:text-3xl text-2xl'>${`${price}`}</p>
+                                <div className='md:mt-24 mt-10'>
+                                    <h4 className='mb-4 font-bold md:text-2xl text-xl'>Select Size</h4>
                                     <ul className='flex items-center justify-start gap-2'>
-                                        {product.size &&
-                                            product.size.map((size,idx) => (
+                                        {size &&
+                                            size.map((size,idx) => (
                                                 <li 
                                                     key={`size${idx}`}
                                                 >
@@ -56,19 +83,15 @@ export default function ProductDetail() {
                                     </ul>
                                 </div>
                                 <div className='mt-10'>
-                                    {/* <Button text={'Add to Cart'} onClick={() => navigate(`/carts`, {state: {product}})} /> */}
-                                    {/* <Button text={'Add to Cart'} onClick={() => navigate(`/carts`)} /> */}
-                                    <Button text={'Add to Cart'} onClick={() => handleAddCart(product)} />
+                                    <Button text={'Add to Cart'} onClick={handleAddCart} />
                                 </div>
-                                <div className='mt-24 md:mt-10'>
-                                    <h4 className='mb-4 font-bold text-2xl md:text-xl'>Description</h4>
-                                    <pre className='break-keep whitespace-pre-wrap text-lg md:text-base'>{product.description}</pre>
+                                <div className='md:mt-24 mt-10'>
+                                    <h4 className='mb-4 font-bold md:text-2xl text-xl'>Description</h4>
+                                    <pre className='break-keep whitespace-pre-wrap md:text-lg text-base'>{description}</pre>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    
                 </div>
             </div>
         </main>

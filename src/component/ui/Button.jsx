@@ -7,7 +7,7 @@ export default function Button({text , onClick}) {
             type='button' 
             onClick={onClick}
         >
-            <span className='text-lg md:text-base text-lightGray'>{text}</span>
+            <span className='md:text-lg text-base text-lightGray'>{text}</span>
         </button>
     );
 }

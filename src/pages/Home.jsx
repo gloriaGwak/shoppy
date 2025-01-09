@@ -6,7 +6,7 @@ export default function Home() {
     return (
         <main>
             <div>
-                <SwiperSilde />
+                {/* <SwiperSilde /> */}
             </div>
             <div className='content'>
                 <div className="inner">

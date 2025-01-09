@@ -1,18 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     fontFamily: {
       bebas: ['Bebas Neue', 'sans-serif'],
     },
+    screens: {
+      // sm: { max: "767px" }, // sm이 max-width로 동작
+      // md: { max: "1023px" },
+      // lg: { max: "1400px" },
+      
+      sm: "0px", // min-width: 640px
+      md: "768px",
+      lg: "1024px",
+      // xl: "1280px",
+    },
     extend: {
-      screens: {
-        sm: { max: "767px" },
-        md: { max: "1023px" },
-        // md: { min: '768px', max: '1023px' },
-        lg: { max: "1400px" },
-        // xl: { min: "1401px", max: "1920px" }
-      },
       accentColor: theme => ({
         ...theme('colors'),
         'sky': '#73c7e3',

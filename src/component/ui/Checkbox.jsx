@@ -3,7 +3,7 @@ import React from 'react';
 export default function Checkbox({name, id, label, onChange}) {
     return (
         <label 
-            className='w-[calc(25%-0.75rem)] md:w-[calc(50%-1rem)] text-lg md:text-base'
+            className='md:w-[calc(25%-0.75rem)] w-[calc(50%-1rem)] md:text-lg text-base'
             htmlFor={id}
         >
             <input 
